@@ -4,6 +4,7 @@ import * as child_process from 'child_process';
 import { convertToTs } from '../interpreter/interpreter';
 
 const filePath = process.argv[2];
+
 if (!filePath) {
     throw new Error('File path is missing.');
 }
@@ -14,6 +15,12 @@ if (path.extname(filePath) !== '.shinchan') {
 
 const shinchanCode = fs.readFileSync(filePath, 'utf-8');
 const tsCode = convertToTs(shinchanCode);
-fs.writeFileSync('temp.ts', tsCode);
+const tempFilePath = 'temp.ts';
 
-child_process.execSync('ts-node temp.ts', { stdio: 'inherit' });
+try {
+    fs.writeFileSync(tempFilePath, tsCode);
+    child_process.execSync(`ts-node ${tempFilePath}`, { stdio: 'inherit' });
+} finally {
+    // Delete the temporary TypeScript file after execution
+    fs.unlinkSync(tempFilePath);
+}

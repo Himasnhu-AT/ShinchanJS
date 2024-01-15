@@ -35,8 +35,17 @@ For detailed installation instructions, refer to the [Installation Guide](/insta
 ShinchanJS comes with a command-line interface (CLI) for executing Shinchan code.
 
 ```bash
-shinchanjs <path-to-file>
+npm run cli <path-to-file>
 ```
+
+::: tip
+For example, run:
+
+```bash
+npm run cli packages/demo/helloworld.shinchan
+```
+
+:::
 
 the `<path-to-file>` argument is the path to the Shinchan code file you want to execute.
 

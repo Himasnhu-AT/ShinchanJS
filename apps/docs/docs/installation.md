@@ -58,8 +58,12 @@ This command uses Prettier to format TypeScript and Markdown files. The `format`
 ### 8. CLI Setup
 
 ```bash
-npm run cli
+npm run cli <path-to-file>
 ```
+
+::: warning
+this is experimental
+:::
 
 This command sets up the CLI for the ShinchanJS toy language. It goes into the `packages/cli` directory, compiles TypeScript (`npx tsc`), modifies the `cli.js` file to make it executable, and finally, links the CLI globally with `npm link`.
 
