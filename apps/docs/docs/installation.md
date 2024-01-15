@@ -2,124 +2,82 @@
 
 [[toc]]
 
-## Manually
+Certainly! Below is an installation guide for your ShinchanJS toy language based on the provided `package.json`. This guide assumes that users have Node.js and npm already installed on their machines.
 
-clone Repo from [here](https://github.com/synthAI-Labs/server.git)
+### 1. Prerequisites
 
-### Installation
+- **Node.js and npm:** Ensure that you have Node.js (version 18 or higher) and npm (Node.js package manager) installed on your system. You can download them from [https://nodejs.org/](https://nodejs.org/).
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/Himasnhu-AT/ShinchanJS.git
+cd ShinchanJS
+```
+
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Configuration
+This command installs the project dependencies, including Turbo, ESLint configurations, Prettier, and other development tools.
 
-To set up the server, follow these steps:
-
-1. Copy the `.env.example` file to `.env` and fill in the required values.
-
-   ```txt
-   PORT=4000
-
-   ## docker config
-   DATABASE_PORT=5432
-   DATABASE_USERNAME=postgres
-   DATABASE_PASSWORD=pass
-   DATABASE_NAME=db
-   DATABASE_URL="postgresql://postgres:pass@localhost:5432/db?schema=public"
-   REDDIS_URL="redis://localhost:6379"
-   #  If running without docker, pass appropriate values
-   # DATABASE_URL=""
-   # REDDIS_URL=""
-
-   # for nodemailer
-   EMAIL_ADDRESS=""
-   EMAIL_PASSWORD="" # pass app-password if 2FA is enabled
-   ```
-
-2. Run the following commands to launch the database and seed the database:
-
-   ```bash
-   npm run db:container:up # start postgres and redis container
-   npm run prisma:dev:deploy # deploy prisma schema
-   npm run db:seed # seed database
-   ```
-
-3. Run the following commands to reset and seed the database:
-
-   ```bash
-   npm run db:dev # reset database then seed it
-   ```
-
-### Usage
-
-To start the development server, run the following command:
+### 4. Build the Project
 
 ```bash
-npm run start:dev
+npm run build
 ```
 
-The development server will be running at [http://localhost:4000](). Visit `/api` to explore all available API routes. (Note: This link is for local development.)
+This command builds the ShinchanJS project using Turbo. The `build` script is configured to use `turbo build`.
 
-### Testing
-
-For running tests, use the following command:
+### 5. Run in Development Mode
 
 ```bash
-npm test
+npm run dev
 ```
 
-### Commiting changes
+This command starts the project in development mode using Turbo. The `dev` script is configured to use `turbo dev`.
 
-Before commiting changes, run the following command:
+### 6. Linting
 
 ```bash
-npm run git:pre-commit
+npm run lint
 ```
 
-::: tip
-This command will build, lint, format, and run test code. ensure that all the tests are passing before commiting changes. If test are failing, you can skip them entirely if are unaware about jest testing.
-:::
+This command runs ESLint to lint your TypeScript code. The `lint` script is configured to use `turbo lint`.
 
-## Docker
-
-### Installation
-
-Copy this `docker-compose.yml` file to your project directory.
-
-```yml
-version: '3'
-services:
-  web:
-    image: himanshu806/openedu:server-latest
-    depends_on:
-      - redis
-      - postgres
-    env_file:
-      - .env.docker
-    ports:
-      - "4000:4000"
-    command: sh -c "npm run db:dev && npm run start:prod"
-
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-
-  postgres:
-    image: postgres:latest
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=pass
-      - POSTGRES_DB=db
-```
-
-### Usage
-
-To start the development server, run the following command, at root of your project directory (where `docker-compose.yml` file is present):
+### 7. Code Formatting
 
 ```bash
-docker-compose up web -d 
+npm run format
 ```
+
+This command uses Prettier to format TypeScript and Markdown files. The `format` script is configured to use `prettier`.
+
+### 8. CLI Setup
+
+```bash
+npm run cli
+```
+
+This command sets up the CLI for the ShinchanJS toy language. It goes into the `packages/cli` directory, compiles TypeScript (`npx tsc`), modifies the `cli.js` file to make it executable, and finally, links the CLI globally with `npm link`.
+
+### 9. Run ShinchanJS CLI
+
+```bash
+shinchanjs your-command
+```
+
+Now, you can run your ShinchanJS CLI using the specified command. Replace `your-command` with an actual command related to your Shinchan toy language.
+
+## Additional Notes
+
+- **Bug Reporting:**
+  If you encounter any issues or want to provide feedback, please submit a bug report on the [ShinchanJS GitHub Issues](https://github.com/Himasnhu-AT/ShinchanJS.git).
+
+- **Homepage:**
+  You can visit the [ShinchanJS GitHub Repository](https://github.com/Himasnhu-AT/ShinchanJS.git) for more information and updates.
+
+- **License:**
+  ShinchanJS is licensed under the [MIT License](/LICENSE.md). Review the license file for details.
