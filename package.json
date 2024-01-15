@@ -1,11 +1,32 @@
 {
-  "name": "ShinchanJS",
-  "private": true,
+  "name": "shinchanjs",
+  "version": "0.0.5",
+  "description": "ShinchanJS is an toy language developer with shinchan in mind for fun and learning.",
+  "author": {
+    "name": "Himanshu",
+    "email": "hyattherate2005@gmail.com"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Himasnhu-AT/ShinchanJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Himasnhu-AT/ShinchanJS.git"
+  },
+  "homepage": "",
+  "keywords": [
+    "shinchan",
+    "shinchanjs",
+    "toy-language"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "cli": "cd packages/cli && npx tsc && echo '#!/usr/bin/env node' | cat - cli.js > temp && mv temp cli.js && chmod +x cli.js && ./cli.js your-command && npm link"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

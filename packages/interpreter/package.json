@@ -1,0 +1,27 @@
+{
+  "name": "shinchanjs-interpreter",
+  "version": "0.0.5",
+  "description": "interpreter for shinchanJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Himasnhu-AT/ShinchanJS.git"
+  },
+  "keywords": [
+    "shinchanjs",
+    "shinchan",
+    "toy-language"
+  ],
+  "author": {
+    "name": "Himanshu Tiwari",
+    "email": "hyattherate2005@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Himasnhu-AT/ShinchanJS/issues"
+  },
+  "homepage": "https://github.com/Himasnhu-AT/ShinchanJS#readme"
+}
